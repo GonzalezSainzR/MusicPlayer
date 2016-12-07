@@ -1,55 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="com.example.student.musicplayer.MainActivity">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/headingView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text=" MyTunes"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/subHeadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:text="Artist"
+        android:textColor="#ff7aff24"
+        android:textSize="35sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/headingView"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/lion" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="view1"
-            android:textAlignment="center">
-        </TextView>
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="view2"
-            android:textAlignment="center">
-        </TextView>
-
         <Button
+
+            android:id="@+id/skipBackButtonView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play"
-            android:id="@+id/button"
-            android:onClick = "playSong"
-            android:layout_below="@+id/button"
-            android:layout_alignLeft="@+id/button"
-            android:layout_alignStart="@+id/button" />
+            android:text="|&lt;&lt;"
+            android:textSize="30sp"
+            android:onClick="backSongClick"/>
         <Button
+            android:id="@+id/backButtonView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pause"
-            android:id="@+id/button"
-            android:onClick = "pauseSong"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="87dp" />
+            android:text="&lt;&lt;"
+            android:textSize="30sp"
+            android:onClick="skipBack"/>
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u25a0"
+            android:textSize="30sp"
+            android:onClick="stopSong"/>
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/pauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="||"
+            android:textSize="30sp"
+            android:onClick="pauseSong"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u25ba"
+            android:textSize="30sp"
+            android:onClick="playSong"/>
+
+        <Button
+            android:id="@+id/forwardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">>"
+            android:textSize="30sp"
+            android:onClick="skipForward"/>
+
+        <Button
+            android:id="@+id/skipForwardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">>|"
+            android:textSize="30sp"
+            android:onClick="nextSongClick"/>
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonLayout"
+        android:layout_alignEnd="@+id/buttonLayout"
+        android:layout_alignLeft="@+id/buttonLayout"
+        android:layout_alignRight="@+id/buttonLayout"
+        android:layout_alignStart="@+id/buttonLayout"
+        android:thumbTint="#ff9900"
+        android:progressTint="#00ff00"
+        android:background = "#eeeeee"
+        />
+
+    <TextView
+        android:id="@+id/startTimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBar"
+        android:layout_toLeftOf="@+id/seekBar"
+        android:layout_toStartOf="@+id/seekBar"
+        android:text="0 min, 0 sec"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/songArtistView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subHeadingView"
+        android:layout_centerHorizontal="true"
+        android:text="Song name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/endTimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBar"
+        android:layout_toEndOf="@+id/seekBar"
+        android:layout_toRightOf="@+id/seekBar"
+        android:text="0 min, 0 sec"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+</RelativeLayout>

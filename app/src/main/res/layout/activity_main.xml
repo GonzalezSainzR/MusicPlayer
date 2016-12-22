@@ -26,7 +26,7 @@
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/name"
-        android:background="@drawable/pandacover" />
+        android:background="@drawable/lion" />
 
     <TextView
         android:id="@+id/title"
